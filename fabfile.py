@@ -9,6 +9,34 @@
 
 #id,year,math_avg_score,math_grade,math_basic_pct,math_proficient_pct,math_advanced_pct,math_not_tested_pct,concat_join_id,id,year,reading_avg_score,reading_grade,reading_basic_pct,reading_proficient_pct,reading_advanced_pct,reading_not_tested_pct,concat_join_id,id,year,science_avg_score,science_grade,science_basic_pct,science_proficient_pct,science_advanced_pct,science_not_tested_pct,concat_join_id,id,year,writing_avg_score,writing_grade,writing_basic_pct,writing_proficient_pct,writing_advanced_pct,writing_not_tested_pct,concat_join_id 13,22,31 (1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,23,24,25,26,27,28,29,30,32,33,34,35,36)
 
+#1id,2year,3math_avg_score,4grade,5math_basic_pct,6math_proficient_pct,7math_advanced_pct,8math_not_tested_pct,9concat_join_id,10id,11year,12reading_avg_score,13reading_basic_pct,14reading_proficient_pct,15eading_advanced_pct,16reading_not_tested_pct,17concat_join_id,18id,19year,20science_avg_score,21science_basic_pct,22science_proficient_pct,23science_advanced_pct,24science_not_tested_pct,25concat_join_id,26id,27year,28writing_avg_score,29writing_basic_pct,30writing_proficient_pct,31writing_advanced_pct,32writing_not_tested_pct,33concat_join_id (1,2,3,4,5,6,7,8,12,13,14,15,16,20,21,22,23,24,28,29,30,31,32,33)
+""""
+1agencykey = models.ForeignKey(School)
+    2school_year = models.CharField(max_length=255)
+    3math_avg_score = models.FloatField(blank=True, null=True)
+    4grade = models.CharField(max_length=2)
+    5math_basic_pct = models.FloatField(blank=True, null=True)
+    6math_proficent_pct = models.FloatField(blank=True, null=True)
+    7math_advanced_pct = models.FloatField(blank=True, null=True)
+    8math_not_tested = models.FloatField(blank=True, null=True)
+    12reading_avg_score = models.FloatField(blank=True, null=True)
+    13reading_basic_pct = models.FloatField(blank=True, null=True)
+    14reading_proficent_pct = models.FloatField(blank=True, null=True)
+    15reading_advanced_pct = models.FloatField(blank=True, null=True)
+    16reading_not_tested = models.FloatField(blank=True, null=True)
+    20science_avg_score = models.FloatField(blank=True, null=True)
+    21science_basic_pct = models.FloatField(blank=True, null=True)
+    22science_proficent_pct = models.FloatField(blank=True, null=True)
+    23science_advanced_pct = models.FloatField(blank=True, null=True)
+    24science_not_tested = models.FloatField(blank=True, null=True)
+    28writing_avg_score = models.FloatField(blank=True, null=True)
+    29writing_basic_pct = models.FloatField(blank=True, null=True)
+    30writing_proficent_pct = models.FloatField(blank=True, null=True)
+    31writing_advanced_pct = models.FloatField(blank=True, null=True)
+    32writing_not_tested = models.FloatField(blank=True, null=True)
+    33concat_join_id = models.CharField(max_length=255)
+""""
+
 
 
 
