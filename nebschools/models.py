@@ -1,9 +1,5 @@
 from django.db import models
 
-# Create your models here. 
-#this stuff is pipe deliniated
-#anything mathy or ranked has to be intergers or floats. 
-#on long text strings, do max legenth 225
 
 class District(models.Model):
     agencykey = models.CharField (primary_key=True, max_length=255)
