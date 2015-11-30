@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import *
 from django.contrib import admin
+from nebschools import views
 
 urlpatterns = [
-    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index')
 ]
