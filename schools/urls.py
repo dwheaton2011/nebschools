@@ -18,6 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', 'schools.templates.index.html'),
+    url(r'^', 'nebschools.views.Index'),
     
 ]
