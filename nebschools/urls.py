@@ -1,3 +1,5 @@
 from django.conf.urls import *
 
-urlpatterns = patterns(r'^', 'schools.nebschools.views.Index')
+urlpatterns = patterns("",
+    (r'^', 'schools.templates.index.html'),
+)

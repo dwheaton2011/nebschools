@@ -10,4 +10,4 @@ import datetime
 def Index(request):
     total_count = School.objects.aggregate(quoi=Sum("num"))
     dictionaries = {"total_count": total_count, }
-    return render_to_response("/templates/index.html", dictionaries)
+    return render_to_response("index.html", dictionaries)
