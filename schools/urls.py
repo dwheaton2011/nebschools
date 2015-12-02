@@ -17,9 +17,8 @@ from django.conf.urls import *
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^', 'nebschools.views.Index'),
-    url(r'^/district/', 'nebschools.views.DistrictPage'),
-    url(r'^/school/', 'nebschools.views.SchoolPage')
-    
+    url(r'^admin', include(admin.site.urls)),
+    url(r'^district', 'nebschools.views.DistrictPage'), #alter so it can handle multiple indexes
+    url(r'^school', 'nebschools.views.SchoolPage'),
+    url(r'^', 'nebschools.views.Index')
 ]

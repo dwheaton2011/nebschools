@@ -1,12 +1,10 @@
-There are {{ total_count }} school districts in Nebraska.
-Those districts have {{ school_count }} schools.
-<!--
-<h1>Hello World</h1>
+<h1>Nebraska Schools</h1>
 
-{% for object in districts %}
 
-<a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
+{% block content %}
+<p>There are {{ total_count }} school districts in Nebraska.
+Those districts have {{ school_count }} schools.</p>
 
-{{ total_count }}
+<a href="{{ object.get_absolute_url }}"</a>
 
-{% endfor %} --!>
+{% endblock %}

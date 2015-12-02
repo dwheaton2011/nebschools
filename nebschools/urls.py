@@ -4,3 +4,6 @@ from . import views
 urlpatterns = patterns["",
     url(r'^', 'schools.views.Index', name="index"),
 ]
+
+
+#likely garb.
