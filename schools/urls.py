@@ -19,5 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', 'nebschools.views.Index'),
+    url(r'^/district/', 'nebschools.views.DistrictPage'),
+    url(r'^/school/', 'nebschools.views.SchoolPage')
     
 ]
