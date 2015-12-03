@@ -1,10 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<br><br><br>
+
 <h1>Nebraska Schools</h1>
 
 
-{% block content %}
 <p>There are {{ total_count }} school districts in Nebraska.
 Those districts have {{ school_count }} schools.</p>
 
-<a href="{{ object.get_absolute_url }}"</a>
+<h3>School districts</h3>
 
+<ul>{% for object in districts %}
+<li><a href="{{ object.get_absolute_url }}">{{ object.distname }}</a></li>
+
+
+{% endfor %}</ul>
+</div>
 {% endblock %}

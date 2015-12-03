@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import *
 from django.contrib import admin
+from nebschools import views
 
 urlpatterns = [
     url(r'^admin', include(admin.site.urls)),
-    url(r'^district', 'nebschools.views.DistrictPage'), #alter so it can handle multiple indexes
-    url(r'^school', 'nebschools.views.SchoolPage'),
-    url(r'^', 'nebschools.views.Index')
+    url(r'^district/(?P<district_slug>[\w-]+)/$', views.DistrictPage),
+    url(r'^district/(?P<district_slug>[\w-]+)/(?P<school_slug>[\w-]+)/$', views.SchoolPage),
+    url(r'^$', 'nebschools.views.Index'),
 ]

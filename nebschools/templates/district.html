@@ -1,1 +1,25 @@
-{{ district_objects }}
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<br><br><br>
+
+<h1>{{ dist }}</h1>
+
+<p>There are {{ total_count }} school districts in Nebraska.
+Those districts have {{ school_count }} schools.</p>
+
+{{ dist }}
+
+<h3> Schools</h3>
+<ul> {% for object in schools %}
+    <li><a href="{{ object.get_absolute_url }}">{{ object.schoolname }}</a></li></li>
+
+{% endfor %}
+</ul>
+
+{% for object in drop %}
+School year: {{ object.school_year }} | Dropout rate: {{ object.dropout_rate }}%<br />
+{% endfor %}
+</div>
+{% endblock %}

@@ -13,7 +13,7 @@ class District(models.Model):
     esu = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     def get_absolute_url(self):
-        return "/district/%i/" % self.id
+        return "/district/%s/" % self.distslug
     def __unicode__(self):
         return self.distname
 
@@ -29,7 +29,7 @@ class School(models.Model):
     esu = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     def get_absolute_url(self):
-        return "/schools/%i/" % self.id
+        return "/district/%s/%s/" % (self.district.distslug, self.schoolslug)
     def __unicode__(self):
         return self.schoolname
     

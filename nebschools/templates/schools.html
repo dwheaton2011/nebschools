@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<br><br><br>
+
+<h1>{{ school }}</h1>
+
+<h3>ACT scores</h3>
+{% for object in act_objects %}
+School year: {{ object.school_year }} | ACT scores: {{ object.actreading }}<br />
+{% endfor %}
+<h3>Graduation rate</h3>
+<h3>ELL percentage</h3>
+<h3>Enrollment</h3>
+<h3>Federal Accountability</h3>
+<h3>Free and Reduced Lunch</h3>
+<h3>NESA Scores</h3>
+    
+
+
+
+</div>
+{% endblock %}
