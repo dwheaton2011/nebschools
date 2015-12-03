@@ -6,16 +6,186 @@
 
 <h1>{{ school }}</h1>
 
-<h3>ACT scores</h3>
-{% for object in act_objects %}
-School year: {{ object.school_year }} | ACT scores: {{ object.actreading }}<br />
-{% endfor %}
-<h3>Graduation rate</h3>
-<h3>ELL percentage</h3>
-<h3>Enrollment</h3>
-<h3>Federal Accountability</h3>
-<h3>Free and Reduced Lunch</h3>
-<h3>NESA Scores</h3>
+
+<h2 class="sub-header">ELL percentage</h2>   
+     <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>School year </th>
+                  <th>ELL percent</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>{% for object in ell_objects %}
+                  <td>{{ object.school_year }}</td>
+                  <td>{{ object.ellpct }}</td>
+                </tr>{% endfor %}
+              </tbody> 
+            </table>
+          </div>    
+    
+<h2 class="sub-header">Enrollment</h2>   
+     <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>School year </th>
+                  <th>Enrollment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>{% for object in enrollment_objects %}
+                  <td>{{ object.school_year }}</td>
+                  <td>{{ object.enrollment }}</td>
+                </tr>{% endfor %}
+              </tbody> 
+            </table>
+          </div>    
+<h2 class="sub-header">Federal Accountability</h2><!-- something odd here too -->   
+     <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>School year </th>
+                  <th>Grade tested</th>
+                  <th>Status</th>
+                  <th>Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>{% for object in fed_objects %}
+                  <td>{{ object.school_year }}</td>
+                  <td>{{ object.grade_tested }}</td>
+                  <td>{{ object.year_testedstatus }}</td>
+                  <td>{{ object.change }}</td>
+                </tr>{% endfor %}
+              </tbody> 
+            </table>
+          </div>    
+    
+<h2 class="sub-header">Free and Reduced Lunch</h2>   
+     <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Percent</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>{% for object in frl_objects %}
+                  <td>{{ object.FRLpct }}</td>
+                </tr>{% endfor %}
+              </tbody> 
+            </table>
+          </div>    
+    
+<h2 class="sub-header">NESA scores</h2> 
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>School year </th>
+                  <th>Grade Tested</th>
+                  <th>Math Average Score</th>
+                  <th>Math basic percent</th>
+                  <th>Math proficent percent</th>
+                  <th>Math advanced percent</th>
+                  <th>Math not tested</th>
+                  <th>Reading Average Score</th>
+                  <th>Reading basic percent</th>
+                  <th>Reading proficent percent</th>
+                  <th>Reading advanced percent</th>
+                  <th>Reading not tested</th>
+                  <th>Science Average Score</th>
+                  <th>Science basic percent</th>
+                  <th>Science proficent percent</th>
+                  <th>Science advanced percent</th>
+                  <th>Science not tested</th>
+                  <th>Writing Average Score</th>
+                  <th>Writing basic percent</th>
+                  <th>Writing proficent percent</th>
+                  <th>Writing advanced percent</th>
+                  <th>Writing not tested</th>    
+                </tr>
+              </thead>
+              <tbody>
+                <tr>{% for object in nesa_objects %}
+                  <td>{{ object.school_year }}</td>
+                  <td>{{ object.grade }}</td>
+                  <td>{{ object.math_avg_score }}</td>
+                  <td>{{ object.math_basic_pct }}</td>
+                  <td>{{ object.math_proficent_pct }}</td>
+                  <td>{{ object.math_advanced_pct }}</td>
+                  <td>{{ object.math_not_tested_pct }}</td>
+                  <td>{{ object.reading_avg_score }}</td>
+                  <td>{{ object.reading_basic_pct }}</td>
+                  <td>{{ object.reading_proficent_pct }}</td>
+                  <td>{{ object.reading_advanced_pct }}</td>
+                  <td>{{ object.reading_not_tested_pct }}</td>
+                  <td>{{ object.science_avg_score }}</td>
+                  <td>{{ object.science_basic_pct }}</td>
+                  <td>{{ object.science_proficent_pct }}</td>
+                  <td>{{ object.science_advanced_pct }}</td>
+                  <td>{{ object.science_not_tested_pct }}</td>
+                  <td>{{ object.writing_avg_score }}</td>
+                  <td>{{ object.writing_basic_pct }}</td>
+                  <td>{{ object.writing_proficent_pct }}</td>
+                  <td>{{ object.writing_advanced_pct }}</td>
+                  <td>{{ object.writing_not_tested_pct }}</td>
+                </tr>{% endfor %}
+              </tbody> 
+            </table>
+          </div>    
+    
+    
+    
+<h2 class="sub-header">Graduation rates</h2>   
+     <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>School year </th>
+                  <th>Graduation percent</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>{% for object in grad_objects %}
+                  <td>{{ object.school_year }}</td>
+                  <td>{{ object.grad_pct }}</td>
+                </tr>{% endfor %}
+              </tbody> 
+            </table>
+          </div> 
+    
+<h2 class="sub-header">ACT scores</h2> <!-- some odd things in this data --> 
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>School year </th>
+                  <th>Reading</th>
+                  <th>Math</th>
+                  <th>Science</th>
+                  <th>English</th>
+                  <th>Composite</th>    
+                </tr>
+              </thead>
+              <tbody>
+                <tr>{% for object in act_objects %}
+                  <td>{{ object.school_year }}</td>
+                  <td>{{ object.actreading }}</td>
+                  <td>{{ object.actmath }}</td>
+                  <td>{{ object.actscience }}</td>
+                  <td>{{ object.actenglish }}</td>
+                  <td>{{ object.actcomposite }}</td>
+                </tr>{% endfor %}
+              </tbody> 
+            </table>
+          </div>    
+    
+    
+    
     
 
 

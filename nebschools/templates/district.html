@@ -17,9 +17,25 @@ Those districts have {{ school_count }} schools.</p>
 
 {% endfor %}
 </ul>
+<h2 class="sub-header">{{ dist }} Dropout Rate</h2>   
+     <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>School year </th>
+                  <th>Dropout rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>{% for object in drop %}
+                  <td>{{ object.school_year }}</td>
+                  <td>{{ object.dropout_rate }}</td>
+                </tr>{% endfor %}
+              </tbody> 
+            </table>
+          </div> 
 
-{% for object in drop %}
-School year: {{ object.school_year }} | Dropout rate: {{ object.dropout_rate }}%<br />
-{% endfor %}
+
+
 </div>
 {% endblock %}
