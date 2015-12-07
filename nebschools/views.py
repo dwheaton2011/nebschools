@@ -22,11 +22,11 @@ def DistrictPage(request, district_slug):
 def SchoolPage(request, district_slug, school_slug):
     school = School.objects.get(district__distslug=district_slug, schoolslug=school_slug)
     act_objects = ACT.objects.filter(agencykey=school).order_by('-school_year')
-    grad_objects = CohortGrad.objects.filter(agencykey=school).order_by('-school_year')
-    ell_objects = ELL.objects.filter(agencykey=school).order_by('-school_year')
+    grad_objects = CohortGrad.objects.filter(agencykey=school).exclude(grad_pct=None).order_by('-school_year')
+    ell_objects = ELL.objects.filter(agencykey=school).exclude(ellpct=None).order_by('-school_year')
     enrollment_objects = Enrollment.objects.filter(agencykey=school).order_by('-school_year')
     fed_objects = FedAcct.objects.filter(agencykey=school).order_by('-school_year')
     frl_objects = FRL.objects.filter(agencykey=school)
-    nesa_objects = NESAscores.objects.filter(agencykey=school)
+    nesa_objects = NESAscores.objects.filter(agencykey=school).exclude(math_avg_score=None)
     dictionaries = {"school" : school, "act_objects" : act_objects, "grad_objects" : grad_objects, "ell_objects" : ell_objects, "enrollment_objects" : enrollment_objects, "fed_objects" : fed_objects, "frl_objects" : frl_objects, "nesa_objects" : nesa_objects}
     return render_to_response ("schools.html", dictionaries)

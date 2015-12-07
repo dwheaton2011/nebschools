@@ -6,7 +6,7 @@
 
 <h1>{{ school }}</h1>
 
-
+{% if ell_objects %}
 <h2 class="sub-header">ELL percentage</h2>   
      <div class="table-responsive">
             <table class="table table-striped">
@@ -24,7 +24,7 @@
               </tbody> 
             </table>
           </div>    
-    
+    {% endif %}
 <h2 class="sub-header">Enrollment</h2>   
      <div class="table-responsive">
             <table class="table table-striped">
@@ -42,7 +42,8 @@
               </tbody> 
             </table>
           </div>    
-<h2 class="sub-header">Federal Accountability</h2><!-- something odd here too -->   
+    
+<h2 class="sub-header">Federal Accountability</h2><!-- something odd here too    -->   
      <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -63,8 +64,8 @@
               </tbody> 
             </table>
           </div>    
-    
-<h2 class="sub-header">Free and Reduced Lunch</h2>   
+{% if frl_objects %}    
+<h2 class="sub-header">Free and Reduced Lunch</h2>   <!-- this data is year-of -->
      <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -73,13 +74,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>{% for object in frl_objects %}
-                  <td>{{ object.FRLpct }}</td>
+                 <tr>{% for object in frl_objects %} 
+                  {% if object.FRLpct %} <td>{{ object.FRLpct }}</td> {% else %}<td></td} {% endif %}
                 </tr>{% endfor %}
               </tbody> 
             </table>
           </div>    
-    
+{% endif %}
+<!-- {% if object. %} <td>{{ object. }}</td> {% else %} {% endif %} -->
 <h2 class="sub-header">NESA scores</h2> 
           <div class="table-responsive">
             <table class="table table-striped">
@@ -111,35 +113,35 @@
               </thead>
               <tbody>
                 <tr>{% for object in nesa_objects %}
-                  <td>{{ object.school_year }}</td>
-                  <td>{{ object.grade }}</td>
-                  <td>{{ object.math_avg_score }}</td>
-                  <td>{{ object.math_basic_pct }}</td>
-                  <td>{{ object.math_proficent_pct }}</td>
-                  <td>{{ object.math_advanced_pct }}</td>
-                  <td>{{ object.math_not_tested_pct }}</td>
-                  <td>{{ object.reading_avg_score }}</td>
-                  <td>{{ object.reading_basic_pct }}</td>
-                  <td>{{ object.reading_proficent_pct }}</td>
-                  <td>{{ object.reading_advanced_pct }}</td>
-                  <td>{{ object.reading_not_tested_pct }}</td>
-                  <td>{{ object.science_avg_score }}</td>
-                  <td>{{ object.science_basic_pct }}</td>
-                  <td>{{ object.science_proficent_pct }}</td>
-                  <td>{{ object.science_advanced_pct }}</td>
-                  <td>{{ object.science_not_tested_pct }}</td>
-                  <td>{{ object.writing_avg_score }}</td>
-                  <td>{{ object.writing_basic_pct }}</td>
-                  <td>{{ object.writing_proficent_pct }}</td>
-                  <td>{{ object.writing_advanced_pct }}</td>
-                  <td>{{ object.writing_not_tested_pct }}</td>
+                    {% if object.school_year %}<td>{{ object.school_year }}</td>{% else %}<td></td>{% endif %}
+                    {% if object.grade %}<td>{{ object.grade }}</td>{% else %}<td></td>{% endif %}
+                  {% if object.math_avg_score %}<td>{{ object.math_avg_score }}</td>{% else %}<td></td>{% endif %}
+                  {% if object.math_basic_pct %}<td>{{ object.math_basic_pct }}</td>{% else %}<td></td>{% endif %}
+                  {% if object.math_proficent_pct %}<td>{{ object.math_proficent_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.math_advanced_pct %}<td>{{ object.math_advanced_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.math_not_tested_pct %}<td>{{ object.math_not_tested_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.reading_avg_score %}<td>{{ object.reading_avg_score }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.reading_basic_pct %}<td>{{ object.reading_basic_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.reading_proficent_pct %}<td>{{ object.reading_proficent_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.reading_advanced_pct %}<td>{{ object.reading_advanced_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.reading_not_tested_pct %}<td>{{ object.reading_not_tested_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.science_avg_score %}<td>{{ object.science_avg_score }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.science_basic_pct %}<td>{{ object.science_basic_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.science_proficent_pct %}<td>{{ object.science_proficent_pct }}</td>{% else %}<td></td>{% endif %}
+                  {% if object.science_advanced_pct %}<td>{{ object.science_advanced_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.science_not_tested_pct %}<td>{{ object.science_not_tested_pct }}</td>{% else %} <td></td>{% endif %}
+                  {% if object.writing_avg_score %}<td>{{ object.writing_avg_score }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.writing_basic_pct %}<td>{{ object.writing_basic_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.writing_proficent_pct %}<td>{{ object.writing_proficent_pct }}</td>{% else %}<td></td> {% endif %}
+                  {% if object.writing_advanced_pct %}<td>{{ object.writing_advanced_pct }}</td>{% else %} <td></td>{% endif %}
+                  {% if object.writing_not_tested_pct %}<td>{{ object.writing_not_tested_pct }}</td>{% else %} <td></td>{% endif %}
                 </tr>{% endfor %}
               </tbody> 
             </table>
           </div>    
     
     
-    
+    {% if grad_objects %}
 <h2 class="sub-header">Graduation rates</h2>   
      <div class="table-responsive">
             <table class="table table-striped">
@@ -157,7 +159,9 @@
               </tbody> 
             </table>
           </div> 
+    {% endif %}
     
+{% if act_objects %}
 <h2 class="sub-header">ACT scores</h2> <!-- some odd things in this data --> 
           <div class="table-responsive">
             <table class="table table-striped">
@@ -182,13 +186,7 @@
                 </tr>{% endfor %}
               </tbody> 
             </table>
+              {% endif %}
           </div>    
-    
-    
-    
-    
-
-
-
 </div>
 {% endblock %}
