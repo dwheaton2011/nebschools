@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin', include(admin.site.urls)),
     url(r'^district/(?P<district_slug>[\w-]+)/$', views.DistrictPage),
     url(r'^district/(?P<district_slug>[\w-]+)/(?P<school_slug>[\w-]+)/$', views.SchoolPage),
+    url(r'^search', views.Search),
     url(r'^$', 'nebschools.views.Index'),
 ]

@@ -30,3 +30,23 @@ def SchoolPage(request, district_slug, school_slug):
     nesa_objects = NESAscores.objects.filter(agencykey=school).exclude(math_avg_score=None)
     dictionaries = {"school" : school, "act_objects" : act_objects, "grad_objects" : grad_objects, "ell_objects" : ell_objects, "enrollment_objects" : enrollment_objects, "fed_objects" : fed_objects, "frl_objects" : frl_objects, "nesa_objects" : nesa_objects}
     return render_to_response ("schools.html", dictionaries)
+
+
+def Search(request):
+    query = request.GET.get('q', '')
+    #exploded = query.split(" ")
+    #district_qset = Q()
+    #school_qset = Q()
+    #for term in exploded:
+    #    district_qset &= Q(standard_name__icontains=term) | Q(candidate_detail__cand_name__icontains=term)
+    #    
+    #for term in exploded:
+    #    school_qset &= Q(cand_name__icontains=term)
+    if query:
+        district_results = District.objects.filter(distname__icontains=query)
+        school_results = School.objects.filter(schoolname__icontains=query)
+    else:
+        district_results = []
+        school_results = []
+    dictionaries = { 'district_results': district_results, 'school_results': school_results, 'query': query, }
+    return render_to_response('search.html', dictionaries)

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<br><br><br>
+<h1>Search results for {{ query }}</h1>
+    <div class="well"><h3 style="margin-top:0;" class="bold"><i class="fa fa-search"></i> Search</h3><p>Find a district or a school</p><form action="/search" method="GET"><input type="search" class="form-control input-lg" name="q" value="" placeholder="Search ..."></form></div>
+{% if district_results or school_results %}
+<h3>Search results for '{{ query }}'</h3>
+    
+<h5>District results</h5>
+    <ul>{% for object in district_results %}</ul><li><a href="{{ object.get_absolute_url }}">{{ object.distname }}</a></li>
+    {% endfor %}
+<h5>School results</h5>
+<ul>{% for object in school_results %}</ul><li><a href="{{ object.get_absolute_url }}">{{ object.schoolname }}</a></li>
+    {% endfor %}    
+    {% endif %}
+    
+
+</div>
+{% endblock %}
