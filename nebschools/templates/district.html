@@ -29,7 +29,7 @@ Those districts have {{ school_count }} schools.</p>
               <tbody>
                 <tr>{% for object in drop %}
                   <td>{{ object.school_year }}</td>
-                  <td>{{ object.dropout_rate }}</td>
+                  {% if object.dropout_rate == '-1.0' %} <td></td> {% else %}<td>{{ object.dropout_rate }}</td> {% endif %}                </tr>
                 </tr>{% endfor %}
               </tbody> 
             </table>

@@ -43,7 +43,7 @@
             </table>
           </div>    
     
-<h2 class="sub-header">Federal Accountability</h2><!-- something odd here too    -->   
+<h2 class="sub-header">Federal Accountability</h2>   
      <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -65,7 +65,7 @@
             </table>
           </div>    
 {% if frl_objects %}    
-<h2 class="sub-header">Free and Reduced Lunch</h2>   <!-- this data is year-of -->
+<h2 class="sub-header">Free and Reduced Lunch</h2> 
      <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -81,6 +81,7 @@
             </table>
           </div>    
 {% endif %}
+    {% if nesa_objects %}
 <!-- {% if object. %} <td>{{ object. }}</td> {% else %} {% endif %} -->
 <h2 class="sub-header">NESA scores</h2> 
           <div class="table-responsive">
@@ -93,23 +94,22 @@
                   <th>Math basic percent</th>
                   <th>Math proficent percent</th>
                   <th>Math advanced percent</th>
-                  <th>Math not tested</th>
+                  {% if object.math_not_tested_pct %}<th>Math not tested</th>{% else %}<td></td>{% endif %}
                   <th>Reading Average Score</th>
                   <th>Reading basic percent</th>
                   <th>Reading proficent percent</th>
                   <th>Reading advanced percent</th>
-                  <th>Reading not tested</th>
+                  {% if object.reading_not_tested_pct %}<th>Reading not tested</th>{% else %}<td></td>{% endif %}
                   <th>Science Average Score</th>
                   <th>Science basic percent</th>
                   <th>Science proficent percent</th>
                   <th>Science advanced percent</th>
-                  <th>Science not tested</th>
+                   {% if object.science_not_tested_pct %}<th>Science not tested</th>{% else %}<td></td>{% endif %}
                   <th>Writing Average Score</th>
                   <th>Writing basic percent</th>
                   <th>Writing proficent percent</th>
                   <th>Writing advanced percent</th>
-                  <th>Writing not tested</th>    
-                </tr>
+{% if object.writing_not_tested_pct %}<th>Writing not tested</th>{% else %}<td></td>{% endif %}                </tr>
               </thead>
               <tbody>
                 <tr>{% for object in nesa_objects %}
@@ -139,7 +139,7 @@
               </tbody> 
             </table>
           </div>    
-    
+    {% endif %}
     
     {% if grad_objects %}
 <h2 class="sub-header">Graduation rates</h2>   
@@ -154,7 +154,7 @@
               <tbody>
                 <tr>{% for object in grad_objects %}
                   <td>{{ object.school_year }}</td>
-                  <td>{{ object.grad_pct }}</td>
+                    {% if object.grad_pct == '-1.0' %} <td></td> {% else %}<td>{{ object.grad_pct }}</td> {% endif %}
                 </tr>{% endfor %}
               </tbody> 
             </table>
@@ -162,7 +162,7 @@
     {% endif %}
     
 {% if act_objects %}
-<h2 class="sub-header">ACT scores</h2> <!-- some odd things in this data --> 
+<h2 class="sub-header">ACT scores</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>

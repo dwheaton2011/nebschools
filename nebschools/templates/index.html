@@ -5,12 +5,11 @@
 <br><br><br>
 
 <h1>Nebraska Schools</h1>
+<h3>The Nebraska Department of Education gathers yearly data on Nebraska's {{ total_count }} school districts and {{ school_count }} schools. Search for your school or select a district from the list below.</h3>
 
 
-<p>There are {{ total_count }} school districts in Nebraska.
-Those districts have {{ school_count }} schools.</p>
 
-<h3>School districts</h3>
+<h5>School districts</h5>
 
 <ul>{% for object in districts %}
 <li><a href="{{ object.get_absolute_url }}">{{ object.distname }}</a></li>
