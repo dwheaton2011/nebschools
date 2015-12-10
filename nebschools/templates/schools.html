@@ -1,11 +1,30 @@
 {% extends 'base.html' %}
-
+{% load math %}
 {% block content %}
 <div class="container">
 <br><br><br>
 
 <h1>{{ school }}</h1>
+<p>{{ school }} 
+    {% with enrollment_objects|first as recent_enrollment %} has {{ recent_enrollment.enrollment }} students according to the latest data from the Nebraska Department of Education.{% endwith %}
 
+    
+    
+    {% with ell_objects|first as recent_ell %}{% if recent_ell %}
+    Of those students, {% mult recent_ell.ellpct 100 %} percent recieve free or reduced lunch.{% endif %}{% endwith %}
+    
+    {% with grad_objects|first as recent_grad %}{% if recent_grad != "-1.0"%}
+    Of those students, {% percent recent_grad.grad_pct %} percent graduated.
+    {% else %}{% endif %}
+    {% endwith %}
+    
+    {% with act_objects|first as recent_act %}{% if recent_act %}
+    The composite ACT score of this school is: {{ recent_act.actcomposite }}.
+    {% else %}{% endif %}
+    {% endwith %}
+    
+    </p>
+    
 {% if ell_objects %}
 <h2 class="sub-header">ELL percentage</h2>   
      <div class="table-responsive">
@@ -19,7 +38,7 @@
               <tbody>
                 <tr>{% for object in ell_objects %}
                   <td>{{ object.school_year }}</td>
-                  <td>{{ object.ellpct }}</td>
+                  <td>{% if ellpct != "-1.0"%}{% percent object.ellpct %}%{% else %}{{ object.ellpct }}{% endif %}</td>
                 </tr>{% endfor %}
               </tbody> 
             </table>
@@ -75,7 +94,7 @@
               </thead>
               <tbody>
                  <tr>{% for object in frl_objects %} 
-                  {% if object.FRLpct %} <td>{{ object.FRLpct }}</td> {% else %}<td></td} {% endif %}
+                  {% if object.FRLpct %} <td>{% if FRLpct != "-1.0"%}{% percent object.FRLpct %}%{% else %}{{ object.FRLpct }}{% endif %}</td> {% else %}<td></td} {% endif %}
                 </tr>{% endfor %}
               </tbody> 
             </table>
@@ -154,7 +173,7 @@
               <tbody>
                 <tr>{% for object in grad_objects %}
                   <td>{{ object.school_year }}</td>
-                    {% if object.grad_pct == '-1.0' %} <td></td> {% else %}<td>{{ object.grad_pct }}</td> {% endif %}
+                    {% if object.grad_pct == '-1.0' %} <td></td> {% else %}<td>{% percent object.grad_pct %}%</td> {% endif %}
                 </tr>{% endfor %}
               </tbody> 
             </table>
