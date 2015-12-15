@@ -7,10 +7,8 @@
 
 <h1>{{ dist }}</h1>
 
-<p>There are {{ total_count }} school districts in Nebraska.
-Those districts have {{ school_count }} schools.</p>
 
-{{ dist }}
+<p>Schools in {{ dist }} district.</p>
 
 <h3> Schools</h3>
 <ul> {% for object in schools %}
@@ -35,6 +33,7 @@ Those districts have {{ school_count }} schools.</p>
               </tbody> 
             </table>
           </div> 
+<h2>Dropout trends</h2>
 <script src="http://mbostock.github.com/d3/d3.v2.js"></script>
 		<style>
 			/* tell the SVG path to be a thin blue line without any area fill */

@@ -7,14 +7,23 @@
 <h1>Nebraska Schools</h1>
 <h3>The Nebraska Department of Education gathers yearly data on Nebraska's {{ total_count }} school districts and {{ school_count }} schools. Search for your school or select a district from the list below.</h3>
 
+<h3>Search for your school</h3>
+<div id="search" class="input-group">
+<form action="/search" method="GET"><input type="search" class="form-control input-lg" name="q" value="" placeholder="Search ..."></form><span class="input-group-btn">
+</div>
+    <br><br><br>
 
+<div class="well">
+<h3>
+<span class="sf"></span>
+ Select a district
+</h3>
+<select class="form-control input-lg" onchange="if (this.value) window.location.href='/district/' + this.value">
+<option value=""></option>
+{% for object in districts %}<option value="{{ object.distslug }}">{{ object.distname }}</option>
+    {% endfor %}
+</select>
+</div>
 
-<h5>School districts</h5>
-
-<ul>{% for object in districts %}
-<li><a href="{{ object.get_absolute_url }}">{{ object.distname }}</a></li>
-
-
-{% endfor %}</ul>
 </div>
 {% endblock %}

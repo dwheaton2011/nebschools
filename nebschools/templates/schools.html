@@ -13,10 +13,10 @@
     {% with ell_objects|first as recent_ell %}{% if recent_ell %}
     Of those students, {% mult recent_ell.ellpct 100 %} percent recieve free or reduced lunch.{% endif %}{% endwith %}
     
-    {% with grad_objects|first as recent_grad %}{% if recent_grad != "-1.0"%}
+    {% if grad_objects %}{% with grad_objects|first as recent_grad %}{% if recent_grad != "-1.0"%}
     Of those students, {% percent recent_grad.grad_pct %} percent graduated.
     {% else %}{% endif %}
-    {% endwith %}
+    {% endwith %}{% endif %}
     
     {% with act_objects|first as recent_act %}{% if recent_act %}
     The composite ACT score of this school is: {{ recent_act.actcomposite }}.
